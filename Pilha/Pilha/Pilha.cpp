@@ -59,7 +59,7 @@ void menu()
 void inicializar()
 {
 
-	// se a lista j· possuir elementos
+	// se a lista j√° possuir elementos
 	// libera a memoria ocupada
 	NO* aux = topo;
 	while (aux != NULL) {
@@ -83,9 +83,24 @@ void push()
 		return;
 	}
 
+    NO* topo = topo;
+
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
+
+    if (topo == NULL){
+        
+        topo = novo;
+
+    } else {
+
+        novo->prox = topo;
+        topo = novo;
+        cout << "Topo e' igual a: " << topo->valor << endl;
+        cout << "Topo e' igual a: " << topo->prox->valor << endl;
+
+    }
 
 
 }
@@ -93,7 +108,16 @@ void push()
 void pop()
 {
 
-	
+	NO* topo = topo;
+    NO* paraRemover = NULL;
+
+    if (topo == NULL){
+        cout << "Pilha vazia\n";
+    }else {
+        cout << "O elemento a ser removido: " << topo->valor;
+        paraRemover = topo;
+        topo = topo->prox;
+        free(paraRemover);
+    }
 
 }
-
